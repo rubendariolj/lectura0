@@ -1,0 +1,10 @@
+body {
+    padding: 10px;
+}
+.column {
+    flex: 50%;
+}
+.row {
+    display: flex;
+    height: 60%;
+}
