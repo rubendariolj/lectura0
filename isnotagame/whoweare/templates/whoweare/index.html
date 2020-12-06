@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Single Page</title>
+        <style>
+        </style>
+        <script>
+
+            // Shows given section
+            function showSection(section) {
+                
+                // Find section text from server
+                fetch(`/whoweare/${section}`)
+                .then(response => response.text())
+                .then(text => {
+                    // Log text and display on page
+                    console.log(text);
+                    document.querySelector('#content').innerHTML = text;
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add button functionality
+                document.querySelectorAll('button').forEach(button => {
+                    button.onclick = function() {
+                        showSection(this.dataset.section);
+                    };
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Is not a game!</h1>
+        <button data-section="1">Who We Are?</button>
+        <button data-section="2">Why do we do?</button>
+        <button data-section="3">Let's play!</button>
+        <hr>
+        <div id="content">Info</div>
+        <hr>
+        <a class="nav-link" href="{% url 'index' %}">Stage1</a>
+    </body>
+</html>
