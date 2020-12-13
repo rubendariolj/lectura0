@@ -12,6 +12,8 @@ contents = ["We are a little group trying to make you think more than you usual 
         "Stage 1 : The time is running (tic-toc-tic-toc). You have a multiple choices questions, so pick an answer. Stage 2: Building...",
         "If you want to contribute whit us, first you must to complete our first challenge before 01/01/2021, being at least the tenth best time. Do you want? so you must to show us how good you are... We are waiting for you. Remember you have a unique oportunity to be part of this..."]
 
+tittles = ["who", "why", "instructions", "join"]
+
 def section(request, num):
     if 1 <= num <= 4:
         return HttpResponse(contents[num - 1])
