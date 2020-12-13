@@ -1,42 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Single Page</title>
-        <style>
-        </style>
-        <script>
+{% extends "stage1/layout.html" %}
 
-            // Shows given section
-            function showSection(section) {
-                
-                // Find section text from server
-                fetch(`/whoweare/${section}`)
-                .then(response => response.text())
-                .then(text => {
-                    // Log text and display on page
-                    console.log(text);
-                    document.querySelector('#content').innerHTML = text;
-                });
-            }
+{% load static %}
 
-            document.addEventListener('DOMContentLoaded', function() {
-                // Add button functionality
-                document.querySelectorAll('button').forEach(button => {
-                    button.onclick = function() {
-                        showSection(this.dataset.section);
-                    };
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <h1>Is not a game!</h1>
-        <button data-section="1">Who We Are?</button>
-        <button data-section="2">Why do we do?</button>
-        <button data-section="3">Let's play!</button>
-        <hr>
-        <div id="content">Info</div>
-        <hr>
-        <a class="nav-link" href="{% url 'index' %}">Stage1</a>
-    </body>
-</html>
+{% block title %}whoweare{% endblock %}
+
+{% block head %}      
+    <script src="{% static 'stage1/ourinfo.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <button onmouseover="ChangeColor(1)" onmouseout="ChangeColor2(1)" id="1" data-section="1" data-color="yellow">Who We Are?</button>
+    <button onmouseover="ChangeColor(2)" onmouseout="ChangeColor2(2)" id="2" data-section="2" data-color="blue">Why do we do this?</button>
+    <button onmouseover="ChangeColor(3)" onmouseout="ChangeColor2(3)" id="3" data-section="3" data-color="red">Let's play!</button>
+    <button onmouseover="ChangeColor(4)" onmouseout="ChangeColor2(4)" id="4" data-section="4" data-color="gray">Join us!</button>
+    <hr>
+    <div id="tittle">Tittle.</div>
+    <div id="content">Info for you.</div>
+    <hr>
+    <a class="nav-link" href="{% url 'go' %}">Stage1</a>
+{% endblock %}
+
+    
